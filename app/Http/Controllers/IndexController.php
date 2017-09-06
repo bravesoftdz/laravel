@@ -25,8 +25,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        var_dump($user->getRoleNames());
         return view('index');
     }
 }

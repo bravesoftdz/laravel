@@ -7,6 +7,7 @@
 + run command ``` php command:start ```
 
 ## Use package
++ laravel/framework
 + spatie/laravel-permission
 + barryvdh/laravel-ide-helper
 

@@ -2,9 +2,9 @@
 
 ## Installation
 + run command ``` composer install ```
-+ run command ``` php migrate:install ```
-+ run command ``` php migrate ```
-+ run command ``` php command:start ```
++ run command ``` php artisan migrate:install ```
++ run command ``` php artisan migrate ```
++ run command ``` php artisan command:start ```
 
 ## Use package
 + laravel/framework

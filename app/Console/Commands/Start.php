@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Lara\User;
-use Spatie\Permission\Contracts\Role;
+use Spatie\Permission\Models\Role;
 
 class Start extends Command
 {

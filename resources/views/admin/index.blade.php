@@ -179,9 +179,8 @@
     </div>
 @endsection
 
-@section('js')
+@push('scripts')
 <script>
     demo.initChartist();
 </script>
-
-@endsection
+@endpush

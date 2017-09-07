@@ -38,13 +38,13 @@
 <body>
     <div>
         <div class="wrapper">
-            @component('admin.sections.sidebar') @endcomponent
+            @include('admin.sections.sidebar')
             <div class="main-panel">
-                @component('admin.sections.menu') @endcomponent
+                @include('admin.sections.menu')
                 <div class="content">
                     @yield('content')
                 </div>
-                @component('admin.sections.footer') @endcomponent
+                @include('admin.sections.footer')
             </div>
         </div>
     </div>
@@ -73,6 +73,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('adminka/js/main.js') }}"></script>
-    @yield('js')
+    @stack('scripts')
 </body>
 </html>

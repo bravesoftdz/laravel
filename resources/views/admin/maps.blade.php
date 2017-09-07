@@ -13,10 +13,10 @@
 </div>
 @endsection
 
-@section('js')
+@push('scripts')
 <script>
     $().ready(function(){
         demo.initGoogleMaps();
     });
 </script>
-@endsection
+@endpush

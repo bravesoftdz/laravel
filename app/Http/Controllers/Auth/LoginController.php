@@ -2,6 +2,7 @@
 
 namespace Lara\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Lara\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,4 +37,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * @param Request $request
+     * @param $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ( $user->hasRole('admin') ) {// do your margic here
+            return redirect()->route('admin');
+        }
+
+        return redirect('/');
+    }
+
 }

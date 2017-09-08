@@ -5,6 +5,7 @@ namespace Lara\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Lara\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -50,6 +51,30 @@ class LoginController extends Controller
         }
 
         return redirect('/');
+    }
+
+    /**
+     * Redirect the user to the facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        var_dump($user->getNickname());
+        var_dump($user->getId());
+        var_dump($user->getEmail());
     }
 
 }

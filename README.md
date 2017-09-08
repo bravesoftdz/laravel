@@ -5,6 +5,7 @@
 + run command ``` php artisan migrate:install ```
 + run command ``` php artisan migrate ```
 + run command ``` php artisan command:start ```
++ run command ``` php artisan config:clear ```
 
 ## Use package
 + laravel/framework

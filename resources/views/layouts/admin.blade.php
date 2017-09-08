@@ -33,7 +33,7 @@
     <link href="{{ asset('adminka/css/themify-icons.css') }}" rel="stylesheet">
 
     <!-- CSS -->
-    @yield('css')
+    @stack('css')
 </head>
 <body>
     <div>

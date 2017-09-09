@@ -11,6 +11,9 @@
         </div>
 
         <ul class="nav">
+            <li class="admins">
+                <a href="{{ route('admin.admins') }}"><i class="ti-user"></i><p>Admin Users</p></a>
+            </li>
             <li class="index">
                 <a href="{{ route('admin.index') }}"><i class="ti-panel"></i><p>Dashboard</p></a>
             </li>

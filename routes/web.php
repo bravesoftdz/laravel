@@ -8,6 +8,8 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('admin/index', 'AdminController@index')->name('admin.index');
 
 
+    Route::get('admin/admins', 'AdminController@admins')->name('admin.admins');
+    //
     Route::get('admin/user', 'AdminController@user')->name('admin.user');
     Route::get('admin/icons', 'AdminController@icons')->name('admin.icons');
     Route::get('admin/notifications', 'AdminController@notifications')->name('admin.notifications');

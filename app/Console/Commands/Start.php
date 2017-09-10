@@ -5,6 +5,7 @@ namespace Lara\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Lara\Permissions;
@@ -38,7 +39,7 @@ class Start extends Command
         parent::__construct();
     }
 
-    private function _createRole()
+    private function _createRoles()
     {
         Role::create(['name' => Roles::USER]);
         Role::create(['name' => Roles::ADMIN]);
@@ -55,6 +56,18 @@ class Start extends Command
         Permission::create(['name' => Permissions::CREATE_ADMIN]);
     }
 
+    private function _setRoles($user)
+    {
+        $user->assignRole(Roles::SUPER_ADMIN);
+        $user->assignRole(Roles::ADMIN);
+    }
+
+    private function _setPermission($user)
+    {
+        $user->givePermissionTo(Permissions::CREATE_ADMIN);
+        $user->givePermissionTo(Permissions::ADMIN_VIEW_USER_LIST);
+    }
+
         /**
      * Execute the console command.
      *
@@ -62,18 +75,13 @@ class Start extends Command
      */
     public function handle()
     {
-        $this->_createRole();
-        $this->_createSuperAdminPermission();
-        $this->_createAdminPermission();
-
-        $id = User::create(['name' => 'admin', 'email' => 'admin@admin.ua', 'password' =>  Hash::make('admin')])->id;
-        Auth::loginUsingId($id);
-
-        $user = Auth::user();
-        $user->assignRole(Roles::SUPER_ADMIN);
-        $user->assignRole(Roles::ADMIN);
-
-        $user->givePermissionTo(Permissions::CREATE_ADMIN);
-        $user->givePermissionTo(Permissions::ADMIN_VIEW_USER_LIST);
+//        $this->_createRoles();
+//        $this->_createSuperAdminPermission();
+//        $this->_createAdminPermission();
+//
+//        $user = User::create(['name' => 'admin', 'email' => 'admin', 'password' =>  Hash::make('admin')]);
+//        $this->_setRoles($user);
+//        $this->_setPermission($user);
+        Log::info('This is some useful information.');
     }
 }

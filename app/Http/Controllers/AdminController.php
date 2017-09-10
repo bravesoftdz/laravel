@@ -4,20 +4,18 @@ namespace Lara\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Lara\Events\DeleteUser;
 use Lara\Permissions;
 use Lara\User;
 use Spatie\Permission\Models\Permission;
 use Lara\Roles;
 use Spatie\Permission\Models\Role;
+use Symfony\Component\Debug\Debug;
 
 class AdminController extends Controller
 {
     public function index()
-    {
-        return view('admin.index');
-    }
-
-    public function admins()
     {
         $users = User::all();
         $userList = [];
@@ -26,7 +24,15 @@ class AdminController extends Controller
                 $userList[] = $user;
             }
         }
-        return view('admin.admins', ['userList' => $userList]);
+        return view('admin.admins.index', ['userList' => $userList]);
+    }
+
+    public function destroy(int $id)
+    {
+        $user = User::findOrFail($id);
+        event(new DeleteUser($user));
+//        $pusher->trigger('my-channel', 'my-event', ['message' => 'test1']);
+        return redirect(route('admins.index'));
     }
 
     public function user()

@@ -26,6 +26,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Function</th>
                             </thead>
                             <tbody>
                             @foreach($userList as $user)
@@ -33,6 +34,18 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td class="btn-function">
+                                        <div class="col-xs-3">
+                                            <btn class="btn btn-sm btn-warning admin-permission btn-icon" data-toggle="tooltip" title="Permission"><i class="ti-key"></i></btn>
+                                            </div>
+                                        <div class="col-xs-3">
+                                            <btn class="btn btn-sm btn-success admin-edit btn-icon" data-toggle="tooltip" title="Edit"><i class="fa ti-pencil-alt"></i></btn>
+                                        </div>
+                                        <div class="col-xs-3">
+                                        {{ Form::open(['method' => 'DELETE', 'route' => ['admins.destroy', $user->id]]) }}
+                                        {{ Form::submit('X', ['class' => 'btn btn-sm btn-danger admin-remove btn-icon']) }}
+                                        {{ Form::close() }}
+                                        </div>
                                 </tr>
                             @endforeach
                             </tbody>

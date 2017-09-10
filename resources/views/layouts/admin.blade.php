@@ -32,8 +32,11 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{{ asset('adminka/css/themify-icons.css') }}" rel="stylesheet">
 
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
     <!-- CSS -->
-    @yield('css')
+    @stack('css')
 </head>
 <body>
     <div>
@@ -74,5 +77,25 @@
     <!-- Scripts -->
     <script src="{{ asset('adminka/js/main.js') }}"></script>
     @stack('scripts')
+
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('133cc8bf829d17ba24c9', {
+            cluster: 'us2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('laravel');
+        channel.bind('admin-remove', function(data) {
+            alert(data.message);
+        });
+
+        channel.bind('admin-add', function(data) {
+            alert(data.message);
+        });
+    </script>
 </body>
 </html>

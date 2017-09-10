@@ -10,6 +10,7 @@
 + laravel/framework
 + spatie/laravel-permission
 + barryvdh/laravel-ide-helper
++ davejamesmiller/laravel-breadcrumbs
 
 
 ## Author

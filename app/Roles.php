@@ -2,22 +2,11 @@
 
 namespace Lara;
 
-use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Role;
 
-class Roles extends Model
+class Roles extends Role
 {
-    protected $table = 'roles';
-
     const USER        = 'user';
     const ADMIN       = 'admin';
     const SUPER_ADMIN = 'super-admin';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'guard_name'
-    ];
 }

@@ -4,6 +4,7 @@ namespace Lara\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Lara\Permissions;
 use Lara\User;
 use Spatie\Permission\Models\Permission;
 use Lara\Roles;
@@ -18,17 +19,6 @@ class AdminController extends Controller
 
     public function admins()
     {
-        $user = Auth::user();
-
-        $users = User::role(Roles::SUPER_ADMIN)->get();
-        $role = Roles::findByName(Roles::SUPER_ADMIN);
-        $role->givePermissionTo(\Lara\Permission::CREATE_ADMIN);
-
-
-       // $user->givePermissionTo('create admin');
-        $perm = $user->getAllPermissions();
-        dd($perm);
-
         $users = User::all();
         $userList = [];
         foreach ($users as $user){

@@ -12,7 +12,7 @@
                                 <p class="category">this is admin user list</p>
                             </div>
                             <div class="col-md-2">
-                                @can(\Lara\Permission::CREATE_ADMIN)
+                                @can(\Lara\Permissions::CREATE_ADMIN)
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-info btn-fill btn-wd">Create Admin</button>
                                 </div>

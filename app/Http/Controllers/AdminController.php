@@ -2,16 +2,15 @@
 
 namespace Lara\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
-use Lara\Permissions;
 use Lara\User;
-use Spatie\Permission\Models\Permission;
 use Lara\Roles;
-use Spatie\Permission\Models\Role;
-use Symfony\Component\Debug\Debug;
 
 class AdminController extends Controller
 {
@@ -31,7 +30,38 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
         event(new DeleteUser($user));
-//        $pusher->trigger('my-channel', 'my-event', ['message' => 'test1']);
+
+        return redirect(route('admins.index'));
+    }
+
+    public function edit(int $id)
+    {
+        $user   = User::find($id);
+        return View::make('admin.admins.edit')->with(compact('user'));
+    }
+
+    public function create()
+    {
+        $user = new User;
+        return View::make('admin.admins.create')->with(compact('user'));
+    }
+
+    public function store(Request $request)
+    {
+        $member = $request->all();
+        $member['password'] = Hash::make(str_random(8));
+        $member['active'] = 1;
+        // TODO: send to email
+        User::create($member);
+        // TODO: show user result after redirect
+        return redirect(route('admins.index'));
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+        // TODO: show user result after redirect
         return redirect(route('admins.index'));
     }
 

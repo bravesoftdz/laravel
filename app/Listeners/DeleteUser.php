@@ -11,8 +11,6 @@ class DeleteUser
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -32,6 +30,7 @@ class DeleteUser
         if(Auth::user()->id == $user->id) {
             return true;
         }
+        // $pusher->trigger('laravel', 'my-event', ['message' => 'test']);
         $user->active = 0;
         $user->deleted_at = Carbon::now();
         $user->save();

@@ -14,7 +14,7 @@
                             <div class="col-md-2">
                                 @can(\Lara\Permissions::CREATE_ADMIN)
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-info btn-fill btn-wd">Create Admin</button>
+                                    <a href="{{ route('admins.create') }}" class="btn btn-info btn-fill btn-wd">Create Admin</a>
                                 </div>
                                 @endcan
                             </div>
@@ -39,7 +39,7 @@
                                             <btn class="btn btn-sm btn-warning admin-permission btn-icon" data-toggle="tooltip" title="Permission"><i class="ti-key"></i></btn>
                                             </div>
                                         <div class="col-xs-3">
-                                            <btn class="btn btn-sm btn-success admin-edit btn-icon" data-toggle="tooltip" title="Edit"><i class="fa ti-pencil-alt"></i></btn>
+                                            <a href="{{ route('admins.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-success admin-edit btn-icon" data-toggle="tooltip" title="Edit"><i class="fa ti-pencil-alt"></i></a>
                                         </div>
                                         <div class="col-xs-3">
                                         {{ Form::open(['method' => 'DELETE', 'route' => ['admins.destroy', $user->id]]) }}

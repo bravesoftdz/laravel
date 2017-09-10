@@ -11,7 +11,7 @@
         </div>
 
         <ul class="nav">
-            <li class="admins">
+            <li class="admins admin">
                 <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>Admin Users</p></a>
             </li>
             <li class="user">

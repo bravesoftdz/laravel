@@ -83,7 +83,7 @@
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('133cc8bf829d17ba24c9', {
+        var pusher = new Pusher("<?= env('PUSHER_APP_ID') ?>", {
             cluster: 'us2',
             encrypted: true
         });

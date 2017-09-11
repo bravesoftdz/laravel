@@ -5,6 +5,7 @@ namespace Lara\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Lara\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Lara\Roles;
 use Lara\User;
 use Laravel\Socialite\Facades\Socialite;
 use Hash;
@@ -49,8 +50,9 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ($user->hasRole('admin')) {// do your margic here
-            return redirect()->route('admin');
+        if ($user->hasRole(Roles::ADMIN)|| $user->hasRole(Roles::SUPER_ADMIN)) {
+            // do your margic here
+            return redirect()->route('admin.index');
         }
 
         return redirect('/');

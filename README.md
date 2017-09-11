@@ -1,7 +1,7 @@
 # Base Laravel Project
 
 ## Installation
-+ run command ``` composer install ```
++ run command ``` composer update ```
 + run command ``` php artisan migrate:install ```
 + run command ``` php artisan migrate ```
 + run command ``` php artisan command:start ```
@@ -12,6 +12,7 @@
 + spatie/laravel-permission
 + barryvdh/laravel-ide-helper
 + laravelcollective/html
++ laravel/socialite
 + davejamesmiller/laravel-breadcrumbs
 + pusher/pusher-php-server
 

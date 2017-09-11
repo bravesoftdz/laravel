@@ -15,7 +15,7 @@ class AddFbDield extends Migration
     {
         if(Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->integer('fb_id');
+                $table->bigInteger('fb_id');
             });
         }
     }

@@ -36,6 +36,9 @@
                                     <td>{{ $user->email }}</td>
                                     <td class="btn-function">
                                         <div class="col-xs-1">
+                                            <a href="{{ route('admin.login', $user->id) }}" class="btn btn-sm btn-info admin-login btn-icon" data-toggle="tooltip" title="Permission"><i class="ti-user"></i></a>
+                                        </div>
+                                        <div class="col-xs-1">
                                             <btn class="btn btn-sm btn-warning admin-permission btn-icon" data-toggle="tooltip" title="Permission"><i class="ti-key"></i></btn>
                                             </div>
                                         <div class="col-xs-1">

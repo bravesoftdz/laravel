@@ -11,9 +11,11 @@
         </div>
 
         <ul class="nav">
-            <li class="admins admin">
+            @role(\Lara\Roles::SUPER_ADMIN)
+            <li class="admins">
                 <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>Admin Users</p></a>
             </li>
+            @endrole
             <li class="user">
                 <a href="{{ route('admin.user') }}"><i class="ti-user"></i><p>User Profile</p></a>
             </li>

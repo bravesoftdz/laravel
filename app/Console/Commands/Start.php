@@ -5,8 +5,13 @@ namespace Lara\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Lara\User;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Lara\Permissions;
+use Lara\Roles;
+use Lara\User;
+
 
 class Start extends Command
 {
@@ -34,21 +39,52 @@ class Start extends Command
         parent::__construct();
     }
 
-    /**
+    private function _createRoles()
+    {
+        Role::create(['name' => Roles::USER]);
+        Role::create(['name' => Roles::ADMIN]);
+        Role::create(['name' => Roles::SUPER_ADMIN]);
+    }
+
+    private function _createAdminPermission()
+    {
+        Permission::create(['name' => Permissions::ADMIN_VIEW_USER_LIST]);
+    }
+
+    private function _createSuperAdminPermission()
+    {
+        Permission::create(['name' => Permissions::CREATE_ADMIN]);
+    }
+
+    private function _setRoles($user)
+    {
+        $user->assignRole(Roles::SUPER_ADMIN);
+        $user->assignRole(Roles::ADMIN);
+    }
+
+    private function _setPermission($user)
+    {
+        $user->givePermissionTo(Permissions::CREATE_ADMIN);
+        $user->givePermissionTo(Permissions::ADMIN_VIEW_USER_LIST);
+    }
+
+        /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        Role::create(['name' => 'user']);
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'super-admin']);
+        $this->info('Create Roles and Permission');
+        $this->_createRoles();
+        $this->_createSuperAdminPermission();
+        $this->_createAdminPermission();
 
-        $id = User::create(['name' => 'admin', 'email' => 'admin@admin.ua', 'password' =>  Hash::make('admin')])->id;
-        Auth::loginUsingId($id);
-        $user = Auth::user();
-        $user->assignRole('super-admin');
-        $user->assignRole('admin');
+        $user = User::create(['name' => 'admin', 'email' => 'admin@admin.ua', 'password' =>  Hash::make('admin')]);
+        $this->info('Creating Admin user');
+        $this->_setRoles($user);
+        $this->_setPermission($user);
+        $this->info('Set Roles and Permission');
+
     }
 }

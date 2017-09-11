@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -177,7 +178,7 @@ return [
         // Lara\Providers\BroadcastServiceProvider::class,
         Lara\Providers\EventServiceProvider::class,
         Lara\Providers\RouteServiceProvider::class,
-
+        Lara\Providers\NotificationProvider::class,
     ],
 
     /*
@@ -226,7 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

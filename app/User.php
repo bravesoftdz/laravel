@@ -4,6 +4,7 @@ namespace Lara;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Lara\Scopes\ActiveScope;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -27,4 +28,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new ActiveScope());
+    }
 }

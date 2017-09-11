@@ -2,15 +2,14 @@
 
 namespace Lara\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
+use Lara\Permissions;
 use Lara\User;
 use Lara\Roles;
+use Session;
 
 class AdminController extends Controller
 {
@@ -52,17 +51,27 @@ class AdminController extends Controller
         $member['password'] = Hash::make(str_random(8));
         $member['active'] = 1;
         // TODO: send to email
-        User::create($member);
-        // TODO: show user result after redirect
-        return redirect(route('admins.index'));
+
+        /** @var User $user */
+        $user = User::create($member);
+        $message = __('messages.create-error');
+        if ($user){
+            $user->assignRole(Roles::ADMIN);
+            $user->givePermissionTo(Permissions::CREATE_ADMIN);
+            $message =  __('messages.create-ok',['name' => $user->name]);
+        }
+
+        Session::flash('message-success', $message);
+        return redirect()->route('admins.index');
     }
 
     public function update(Request $request, int $id)
     {
         $user = User::find($id);
-        $user->update($request->all());
-        // TODO: show user result after redirect
-        return redirect(route('admins.index'));
+        if($user->update($request->all())){
+            Session::flash('message-success', __('messages.update-ok',['name' => $user->name]));
+        }
+        return redirect()->route('admins.index');
     }
 
     public function user()

@@ -16,7 +16,7 @@ class UpdateModelUser extends Migration
         if(Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
                 $table->smallInteger('active')->default(1);
-                $table->timestamp('deleted_at');
+                $table->timestamp('deleted_at')->nullable();
             });
         }
     }

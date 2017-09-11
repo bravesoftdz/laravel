@@ -75,13 +75,16 @@ class Start extends Command
      */
     public function handle()
     {
+        $this->info('Create Roles and Permission');
         $this->_createRoles();
         $this->_createSuperAdminPermission();
         $this->_createAdminPermission();
 
-        $user = User::create(['name' => 'admin', 'email' => 'admin', 'password' =>  Hash::make('admin')]);
+        $user = User::create(['name' => 'admin', 'email' => 'admin@admin.ua', 'password' =>  Hash::make('admin')]);
+        $this->info('Creating Admin user');
         $this->_setRoles($user);
         $this->_setPermission($user);
-        // TODO: add new message to console
+        $this->info('Set Roles and Permission');
+
     }
 }

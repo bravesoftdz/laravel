@@ -35,13 +35,13 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td class="btn-function">
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-1">
                                             <btn class="btn btn-sm btn-warning admin-permission btn-icon" data-toggle="tooltip" title="Permission"><i class="ti-key"></i></btn>
                                             </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-1">
                                             <a href="{{ route('admins.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-success admin-edit btn-icon" data-toggle="tooltip" title="Edit"><i class="fa ti-pencil-alt"></i></a>
                                         </div>
-                                        <div class="col-xs-3">
+                                        <div class="col-xs-1">
                                         {{ Form::open(['method' => 'DELETE', 'route' => ['admins.destroy', $user->id]]) }}
                                         {{ Form::submit('X', ['class' => 'btn btn-sm btn-danger admin-remove btn-icon']) }}
                                         {{ Form::close() }}

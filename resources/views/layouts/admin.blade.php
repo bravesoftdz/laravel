@@ -45,6 +45,18 @@
             <div class="main-panel">
                 @include('admin.sections.menu')
                 <div class="content">
+                    @if (session('message-success'))
+                        <div id='falash-alert-success' class="alert alert-success">
+                            <button type="button" aria-hidden="true" class="close">×</button>
+                            <span>{!! session('message-success') !!}</span>
+                        </div>
+                    @endif
+                    @if (session('message-error'))
+                    <div id='falash-alert-danger' class="alert alert-danger">
+                        <button type="button" aria-hidden="true" class="close">×</button>
+                        <span>{!! session('message-error') !!}</span>
+                    </div>
+                    @endif
                     @yield('content')
                 </div>
                 @include('admin.sections.footer')

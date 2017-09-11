@@ -10,7 +10,9 @@
 + laravel/framework
 + spatie/laravel-permission
 + barryvdh/laravel-ide-helper
++ laravelcollective/html
 + davejamesmiller/laravel-breadcrumbs
++ pusher/pusher-php-server
 
 
 ## Author

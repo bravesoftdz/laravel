@@ -5,6 +5,10 @@ namespace Lara\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Lara\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Lara\User;
+use Laravel\Socialite\Facades\Socialite;
+use Hash;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -45,10 +49,63 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if ( $user->hasRole('admin') ) {// do your margic here
+        if ($user->hasRole('admin')) {// do your margic here
             return redirect()->route('admin');
         }
 
+        return redirect('/');
+    }
+
+    /**
+     * Redirect the user to the facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    private function _createNewUser($userSocialite)
+    {
+        $password = str_random(8);
+        $user  = User::create([
+            'name'     => $userSocialite->getName(),
+            'email'    => $userSocialite->getEmail(),
+            'fb_id'    => $userSocialite->getId(),
+            'password' => Hash::make($password),
+        ]);
+
+        if ($user) {
+            // TODO: send password on the email
+        }
+
+        return true;
+    }
+
+    /**
+     * Obtain the user information from facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $userSocialite = Socialite::driver('facebook')->user();
+        if (!$userSocialite) {
+            return redirect('/login');
+        }
+
+        $user = User::where('email', $userSocialite->getEmail())->first();
+        if (!$user) {
+            $this->_createNewUser($userSocialite);
+        }
+
+        if (is_null($user->fb_id)){
+            $user->fb_id = $userSocialite->getId();
+            $user->save();
+        }
+
+        Auth::loginUsingId($user->id);
         return redirect('/');
     }
 

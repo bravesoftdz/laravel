@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('css')
+    <link href="{{ asset('css/social.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,6 +13,35 @@
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        <div class="omb_login">
+                            <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                                <div class="col-xs-4 col-sm-3">
+                                    <a href="{{ route('login.facebook') }}"
+                                       class="btn btn-lg btn-block omb_btn-facebook">
+                                        <i class="fa fa-facebook visible-xs"></i>
+                                        <span class="hidden-xs">Facebook</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-4 col-sm-3">
+                                    <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                                        <i class="fa fa-twitter visible-xs"></i>
+                                        <span class="hidden-xs">Twitter</span>
+                                    </a>
+                                </div>
+                                <div class="col-xs-4 col-sm-3">
+                                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                                        <i class="fa fa-google-plus visible-xs"></i>
+                                        <span class="hidden-xs">Google+</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row omb_row-sm-offset-3 omb_loginOr">
+                            <div class="col-xs-12 col-sm-9">
+                                <hr class="omb_hrOr">
+                                <span class="omb_spanOr"></span>
+                            </div>
+                        </div>
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

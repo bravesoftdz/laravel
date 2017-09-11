@@ -3,6 +3,9 @@
 Auth::routes();
 Route::get('/', 'IndexController@index')->name('home');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('login.facebook');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('admin', 'AdminController@index')->name('admin');
     Route::get('admin/index', 'AdminController@index')->name('admin.index');

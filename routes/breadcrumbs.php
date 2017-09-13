@@ -20,6 +20,6 @@ Breadcrumbs::register('admins.create', function ($breadcrumbs) {
 // Index > Admins > Edit
 Breadcrumbs::register('admins.edit', function ($breadcrumbs, $id) {
     $breadcrumbs->parent('admins');
+    $breadcrumbs->push(__('admin-main.edit'));
     $breadcrumbs->push($id);
-
 });

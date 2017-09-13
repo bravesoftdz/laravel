@@ -8,14 +8,14 @@
                     <div class="header">
                         <div class="row">
                             <div class="col-md-10">
-                                <h4 class="title">Admin Table</h4>
-                                <p class="category">this is admin user list</p>
+                                <h4 class="title">Adminka</h4>
+                                <p class="category">...</p>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
                     </div>
                     <div class="content table-responsive table-full-width">
-                        ADMINKA
+
                     </div>
                 </div>
             </div>

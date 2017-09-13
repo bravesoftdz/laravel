@@ -1,7 +1,14 @@
 <?php
 
-Route::group(['middleware' => ['role:admin']], function () {
-    Route::prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
+
+    Route::get('localization/{locale}', function ($locale) {
+        Session::put('locale', $locale);
+        App::setLocale($locale);
+        return redirect()->back();
+    })->name('admin.locale');
+
+    Route::group(['middleware' => ['role:admin']], function () {
         Route::resource('admin', 'AdminController', ['only' => ['index']]);
 
         Route::get('user', 'AdminController@user')->name('admin.user');

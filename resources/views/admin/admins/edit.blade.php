@@ -39,7 +39,7 @@
             <div class="card">
                 <div class="header">
                     {{ Breadcrumbs::render('admins.edit', $user->id) }}
-                    <h4 class="title">Edit Profile</h4>
+                    <h4 class="title">@lang('admin-main.name')</h4>
                 </div>
                 <div class="content">
                     {{ Form::model($user, ['method' => 'PUT', 'route' => ['admins.update', $user->id]]) }}
@@ -52,20 +52,20 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Name') }}
+                                    {{ Form::label('name', __('admin-main.name')) }}
                                     {{ Form::text('name',null,['class'=>'form-control border-input']) }}
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    {{ Form::label('email', 'Email address') }}
+                                    {{ Form::label('email', __('admin-main.email')) }}
                                     {{ Form::email('email',null,['class'=>'form-control border-input']) }}
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center">
-                            {{ Form::submit('Edit Profile', ['class' => 'btn btn-info btn-fill btn-wd']) }}
+                            {{ Form::submit(__('admin-main.edit'), ['class' => 'btn btn-info btn-fill btn-wd']) }}
                         </div>
                     <div class="clearfix"></div>
                     {{ Form::close() }}

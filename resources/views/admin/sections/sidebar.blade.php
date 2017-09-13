@@ -7,13 +7,13 @@
 
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a class="simple-text" href="{{ url('/') }}">Website</a>
+            <a class="simple-text" href="{{ url('/') }}">@lang('admin-main.website')</a>
         </div>
 
         <ul class="nav">
             @role(\Lara\Roles::SUPER_ADMIN)
             <li class="admins">
-                <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>Admin Users</p></a>
+                <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>@lang('admin-main.admins')</p></a>
             </li>
             @endrole
             <li class="user">

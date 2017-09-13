@@ -58,7 +58,6 @@ class AdminsController extends Controller
         $message = __('messages.create-error');
         if ($user){
             $user->assignRole(Roles::ADMIN);
-            $user->givePermissionTo(Permissions::CREATE_ADMIN);
             $message =  __('messages.create-ok',['name' => $user->name]);
 
             // TODO: send password to email

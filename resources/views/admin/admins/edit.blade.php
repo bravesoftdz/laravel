@@ -38,6 +38,7 @@
         <div class="col-lg-8 col-md-7">
             <div class="card">
                 <div class="header">
+                    {{ Breadcrumbs::render('admins.edit', $user->id) }}
                     <h4 class="title">Edit Profile</h4>
                 </div>
                 <div class="content">

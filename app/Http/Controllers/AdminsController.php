@@ -55,10 +55,10 @@ class AdminsController extends Controller
 
         /** @var User $user */
         $user = User::create($member);
-        $message = __('messages.create-error');
+        $message = __('admin-messages.create-error');
         if ($user){
             $user->assignRole(Roles::ADMIN);
-            $message =  __('messages.create-ok',['name' => $user->name]);
+            $message =  __('admin-messages.create-ok',['name' => $user->name]);
 
             // TODO: send password to email
         }
@@ -71,7 +71,7 @@ class AdminsController extends Controller
     {
         $user = User::find($id);
         if($user->update($request->all())){
-            Session::flash('message-success', __('messages.update-ok',['name' => $user->name]));
+            Session::flash('message-success', __('admin-messages.update-ok',['name' => $user->name]));
         }
         return redirect()->route('admins.index');
     }

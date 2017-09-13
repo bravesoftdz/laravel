@@ -7,7 +7,7 @@
                 <span class="icon-bar bar2"></span>
                 <span class="icon-bar bar3"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('admin.index') }}">@lang('admin-main.dashboard')</a>
+            <a class="navbar-brand" href="{{ route('admin.index') }}">@lang('admin/main.dashboard')</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -25,12 +25,12 @@
                 </li>
                 <li class="dropdown localization">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p>@lang('admin-main.'.$locale)</p>
+                        <p>@lang('admin/main.'.$locale)</p>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu localization-menu">
-                        <li><a href="{{ route('admin.locale', 'ru') }}">@lang('admin-main.ru')</a></li>
-                        <li><a href="{{ route('admin.locale', 'en') }}">@lang('admin-main.en')</a></li>
+                        <li><a href="{{ route('admin.locale', 'ru') }}">@lang('admin/main.ru')</a></li>
+                        <li><a href="{{ route('admin.locale', 'en') }}">@lang('admin/main.en')</a></li>
                     </ul>
                 </li>
                 <li>
@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        @lang('admin-main.exit')
+                                        @lang('admin/main.exit')
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

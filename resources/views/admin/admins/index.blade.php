@@ -6,6 +6,7 @@
             <div class="col-md-12">
                 <div class="admin-list">
                     <div class="header">
+                        {{ Breadcrumbs::render('admins') }}
                         <div class="row">
                             <div class="col-md-10">
                                 <h4 class="title">Admin Table</h4>

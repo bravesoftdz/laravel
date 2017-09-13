@@ -6,6 +6,7 @@
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="header">
+                    {{ Breadcrumbs::render('admins.create') }}
                     <h4 class="title">Create Profile</h4>
                 </div>
                 <div class="content">

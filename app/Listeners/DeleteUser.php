@@ -27,14 +27,14 @@ class DeleteUser
     {
         $user = $event->user;
         if(Auth::user()->id == $user->id) {
-            Session::flash('message-error', __('messages.remove-self'));
+            Session::flash('message-error', __('admin-messages.remove-self'));
             return true;
         }
         // $pusher->trigger('laravel', 'my-event', ['message' => 'test']);
         $user->active = 0;
         $user->deleted_at = Carbon::now();
         if ($user->save()){
-            Session::flash('message-success', __('messages.remove-ok',['name' => $user->name]));
+            Session::flash('message-success', __('admin-messages.remove-ok',['name' => $user->name]));
         }
     }
 }

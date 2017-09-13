@@ -7,7 +7,7 @@
                 <span class="icon-bar bar2"></span>
                 <span class="icon-bar bar3"></span>
             </button>
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="{{ route('admin.index') }}">@lang('admin-main.dashboard')</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -23,19 +23,14 @@
                         <p>Settings</p>
                     </a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown localization">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="ti-bell"></i>
-                        <p class="notification">5</p>
-                        <p>Notifications</p>
+                        <p>@lang('admin-main.'.$locale)</p>
                         <b class="caret"></b>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Notification 1</a></li>
-                        <li><a href="#">Notification 2</a></li>
-                        <li><a href="#">Notification 3</a></li>
-                        <li><a href="#">Notification 4</a></li>
-                        <li><a href="#">Another notification</a></li>
+                    <ul class="dropdown-menu localization-menu">
+                        <li><a href="{{ route('admin.locale', 'ru') }}">@lang('admin-main.ru')</a></li>
+                        <li><a href="{{ route('admin.locale', 'en') }}">@lang('admin-main.en')</a></li>
                     </ul>
                 </li>
                 <li>
@@ -49,10 +44,8 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        @lang('admin-main.exit')
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

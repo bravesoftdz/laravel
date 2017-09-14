@@ -3,15 +3,11 @@
 namespace Lara\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Lara\Permissions;
 use Lara\Roles;
-use Lara\User;
-
+use DB;
 
 class Start extends Command
 {
@@ -32,59 +28,31 @@ class Start extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
      */
     public function __construct()
     {
         parent::__construct();
     }
 
-    private function _createRoles()
-    {
-        Role::create(['name' => Roles::USER]);
-        Role::create(['name' => Roles::ADMIN]);
-        Role::create(['name' => Roles::SUPER_ADMIN]);
-    }
-
-    private function _createAdminPermission()
-    {
-        Permission::create(['name' => Permissions::ADMIN_VIEW_USER_LIST]);
-    }
-
-    private function _createSuperAdminPermission()
-    {
-        Permission::create(['name' => Permissions::CREATE_ADMIN]);
-    }
-
-    private function _setRoles($user)
-    {
-        $user->assignRole(Roles::SUPER_ADMIN);
-        $user->assignRole(Roles::ADMIN);
-    }
-
-    private function _setPermission($user)
-    {
-        $user->givePermissionTo(Permissions::CREATE_ADMIN);
-        $user->givePermissionTo(Permissions::ADMIN_VIEW_USER_LIST);
-    }
-
-        /**
+    /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        $this->info('Create Roles and Permission');
-        $this->_createRoles();
-        $this->_createSuperAdminPermission();
-        $this->_createAdminPermission();
+        DB::table('roles')->delete();
+        DB::table('permissions')->delete();
+        DB::table('users')->delete();
 
-        $user = User::create(['name' => 'admin', 'email' => 'admin@admin.ua', 'password' =>  Hash::make('admin')]);
-        $this->info('Creating Admin user');
-        $this->_setRoles($user);
-        $this->_setPermission($user);
-        $this->info('Set Roles and Permission');
+        Role::create(['name' => Roles::ADMIN]);
+        Role::create(['name' => Roles::SUPER_ADMIN]);
+        Permission::create(['name' => Permissions::CREATE_ADMIN]);
 
+        $this->info('Create Admin');
+        new Admin();
+        $this->info('Create Super Admin');
+        new SuperAdmin();
+        $this->info('Done');
     }
 }

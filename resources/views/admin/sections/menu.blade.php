@@ -29,8 +29,9 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu localization-menu">
-                        <li><a href="{{ route('admin.locale', 'ru') }}">@lang('admin/main.ru')</a></li>
-                        <li><a href="{{ route('admin.locale', 'en') }}">@lang('admin/main.en')</a></li>
+                        @foreach(config('app.locals') as $key)
+                            <li><a href="{{ route('admin.locale', $key) }}">@lang('admin/main.'.$key)</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li>

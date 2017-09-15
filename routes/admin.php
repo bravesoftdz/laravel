@@ -4,7 +4,6 @@ Route::prefix('admin')->group(function () {
 
     Route::get('localization/{locale}', function ($locale) {
         Session::put('locale', $locale);
-        App::setLocale($locale);
         return redirect()->back();
     })->name('admin.locale');
 

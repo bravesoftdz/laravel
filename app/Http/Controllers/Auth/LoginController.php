@@ -5,11 +5,14 @@ namespace Lara\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Lara\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Lara\Mail\createUser;
+use Lara\Mail\setUserPassword;
 use Lara\Roles;
 use Lara\User;
 use Laravel\Socialite\Facades\Socialite;
 use Hash;
 use Auth;
+use Mail;
 
 class LoginController extends Controller
 {
@@ -79,7 +82,7 @@ class LoginController extends Controller
         ]);
 
         if ($user) {
-            // TODO: send password on the email
+            Mail::to($user)->queue(new setUserPassword($user));
         }
 
         return true;

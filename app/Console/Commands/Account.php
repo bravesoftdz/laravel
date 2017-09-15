@@ -22,12 +22,11 @@ interface IAccount
  * Class Account
  * @package Lara\Console\Commands
  */
-class Account implements IAccount
+abstract class Account implements IAccount
 {
     protected $name;
     protected $email;
     protected $user;
-    protected $console;
 
     public function __construct()
     {

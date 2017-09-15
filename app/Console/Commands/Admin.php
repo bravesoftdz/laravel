@@ -8,7 +8,6 @@ namespace Lara\Console\Commands;
  */
 class Admin extends Account
 {
-
     public function __construct()
     {
         $this->name  = 'admin';

@@ -16,8 +16,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $user = \Auth::user();
-        \Mail::to('mr.dukuy@gmail.com')->send(new createUser($user));
         return view('admin.index.index');
     }
 

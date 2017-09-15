@@ -6,11 +6,12 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
-use Lara\Permissions;
+use Lara\Mail\createUser;
 use Lara\User;
 use Lara\Roles;
 use Session;
 use Auth;
+use Mail;
 
 class AdminsController extends Controller
 {
@@ -60,7 +61,7 @@ class AdminsController extends Controller
             $user->assignRole(Roles::ADMIN);
             $message =  __('admin/messages.create-ok',['name' => $user->name]);
 
-            // TODO: send password to email
+            Mail::to($user)->queue(new createUser($user));
         }
 
         Session::flash('message-success', $message);

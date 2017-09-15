@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
+use Lara\Mail\createUser;
 use Lara\Permissions;
 use Lara\User;
 use Lara\Roles;
@@ -15,6 +16,8 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $user = \Auth::user();
+        \Mail::to('mr.dukuy@gmail.com')->send(new createUser($user));
         return view('admin.index.index');
     }
 

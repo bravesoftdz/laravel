@@ -7,15 +7,22 @@
 + run command ``` php artisan command:start ```
 + run command ``` php artisan config:clear ```
 
-## Use package
-+ laravel/framework
-+ spatie/laravel-permission
-+ barryvdh/laravel-ide-helper
-+ laravelcollective/html
-+ laravel/socialite
-+ davejamesmiller/laravel-breadcrumbs
-+ pusher/pusher-php-server
+## Roles
++ Super-admin
++ Admin
 
+## Permission
++ Add new admin
 
+## Adminka
++ Role and Permission
++ Localization
++ Socialite
++ Breadcrumbs
++ Email notification
++ Pusher notification
++ Pages:
+  * Admin List
+  
 ## Author
 [Dykyi Roman](https://www.linkedin.com/in/roman-dykyi-43428543/), e-mail: [mr.dukuy@gmail.com](mailto:mr.dukuy@gmail.com)

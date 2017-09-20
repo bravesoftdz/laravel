@@ -11,5 +11,8 @@ $(function () {
 
     $(document).on('click', '#falash-alert-success button', clickFlashAlertClose);
     $(document).on('click', '#falash-alert-danger button', clickFlashAlertClose);
+
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone("#slider-dropzone", { url: "/admin/slider-upload"});
 });
 

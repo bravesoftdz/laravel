@@ -18,5 +18,6 @@ return [
     'function'   => 'Function',
     'website'    => 'Website',
     'dashboard'  => 'Dashboard',
-
+    'pages'      => 'Pages',
+    'slider'     => 'Slider'
 ];

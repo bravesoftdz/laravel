@@ -15,10 +15,11 @@ class Dropzone extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('alias')->index();
+            $table->string('path')->index();
             $table->string('name');
             $table->string('type');
             $table->integer('size');
+            $table->timestamps();
         });
     }
 

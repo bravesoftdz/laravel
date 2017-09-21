@@ -4,6 +4,7 @@ namespace Lara\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Lara\Files;
+use Storage;
 
 class PagesController extends Controller
 {
@@ -17,26 +18,32 @@ class PagesController extends Controller
         return view('admin.pages.slider');
     }
 
+    private function _upload(Request $request)
+    {
+        return Files::create([
+            'name' => $request->file->getClientOriginalName(),
+            'path' => $request->file->store('uploads/slider'),
+            'size' => $request->file->getClientSize(),
+            'type' => $request->file->getClientMimeType(),
+        ]);
+    }
+
+    private function _delete(string $path)
+    {
+        Files::where(['path' => $path])->delete();
+        return Storage::delete($path);
+    }
+
     public function sliderUpload(Request $request)
     {
-        $ds = DIRECTORY_SEPARATOR;
-        $storeFolder = 'uploads';
-        if (!empty($_FILES)) {
-//            $tempFile = $_FILES['file']['tmp_name'];
-//            $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;  //4
-//            $targetFile = $targetPath . $_FILES['file']['name'];  //5
-//            move_uploaded_file($tempFile, $targetFile); //6
-
-            Files::created([
-                'name'  => $_FILES['name'],
-                'alias' => md5($_FILES['file']),
-                'size'  => $_FILES['size'],
-                'type'  => $_FILES['type']
-            ]);
+        if ($request->hasFile('file')) {
+            $file       = $this->_upload($request);
+            $resultData = ['success' => true, 'fileName' => $file->path];
+        } else {
+            $this->_delete($request->input('name'));
+            $resultData = ['success' => true];
         }
 
-        return response()->json([
-            'success' => true,
-        ]);
+        return response()->json($resultData);
     }
 }

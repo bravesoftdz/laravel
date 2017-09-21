@@ -24,7 +24,6 @@
                             <div class="fallback">
                                 <input name="file" type="file" multiple />=
                             </div>
-                            {{ csrf_field() }}
                         </form>
                        </div>
                     </div>

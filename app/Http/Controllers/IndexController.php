@@ -4,14 +4,14 @@ namespace Lara\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Lara\Files;
 use Lara\User;
 
 class IndexController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * IndexController constructor.
      */
     public function __construct()
     {
@@ -25,6 +25,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $sliderList = Storage::files(Files::UPLOAD_SLIDER);
+        return view('index', compact('sliderList'));
     }
 }

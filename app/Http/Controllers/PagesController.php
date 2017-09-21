@@ -22,7 +22,7 @@ class PagesController extends Controller
     {
         return Files::create([
             'name' => $request->file->getClientOriginalName(),
-            'path' => $request->file->store('uploads/slider'),
+            'path' => $request->file->store(Files::UPLOAD_SLIDER),
             'size' => $request->file->getClientSize(),
             'type' => $request->file->getClientMimeType(),
         ]);

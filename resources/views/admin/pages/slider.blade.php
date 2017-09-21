@@ -35,4 +35,5 @@
 
 @push('scripts')
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <script src="{{ asset('adminka/js/slider.js') }}"></script>
 @endpush

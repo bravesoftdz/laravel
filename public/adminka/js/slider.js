@@ -7,7 +7,13 @@ $(function () {
         maxFiles: 10, //change limit as per your requirements
         dictMaxFilesExceeded: "Maximum upload limit reached",
         init: function () {
-
+            var thisDropzone = this;
+            // Create the mock file:
+            var mockFile = { name: "Filename", size: 12345 };
+            // Call the default addedfile event handler
+            thisDropzone.emit("addedfile", mockFile);
+            // And optionally show the thumbnail of the file:
+            thisDropzone.emit("thumbnail", mockFile, "/image/url");
         },
         success: function (file, response) {
             uploadName = response.fileName;
@@ -26,4 +32,6 @@ $(function () {
             });
         }
     });
+
+
 });

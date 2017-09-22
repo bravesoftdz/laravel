@@ -15,7 +15,11 @@ class PagesController extends Controller
 
     public function slider()
     {
-        return view('admin.pages.slider');
+        $imageSliderList = Files::where(['destination' => Files::TYPE_SLIDER])->get();
+        foreach ($imageSliderList as $one){
+            //...
+        }
+        return view('admin.pages.slider', compact('imageSliderList'));
     }
 
     private function _upload(Request $request)
@@ -25,6 +29,7 @@ class PagesController extends Controller
             'path' => $request->file->store(Files::UPLOAD_SLIDER),
             'size' => $request->file->getClientSize(),
             'type' => $request->file->getClientMimeType(),
+            'destination' => Files::TYPE_SLIDER,
         ]);
     }
 

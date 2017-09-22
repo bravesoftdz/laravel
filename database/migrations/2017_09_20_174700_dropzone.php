@@ -18,6 +18,7 @@ class Dropzone extends Migration
             $table->string('path')->index();
             $table->string('name');
             $table->string('type');
+            $table->string('destination');
             $table->integer('size');
             $table->timestamps();
         });

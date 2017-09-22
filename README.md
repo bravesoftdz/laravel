@@ -16,13 +16,16 @@
 
 ## Adminka
 + Role and Permission
++ Error Tracking [Sentry]
 + Localization
-+ Socialite
++ Socialite [Facebook]
 + Breadcrumbs
-+ Email notification
-+ Pusher notification
++ Email notification [Quaue]
++ Real time notification [Pusher]
 + Pages:
   * Admin List
+  * User List
+  * Website Slider
   
 ## Author
 [Dykyi Roman](https://www.linkedin.com/in/roman-dykyi-43428543/), e-mail: [mr.dukuy@gmail.com](mailto:mr.dukuy@gmail.com)

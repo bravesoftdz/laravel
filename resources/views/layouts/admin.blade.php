@@ -33,10 +33,9 @@
     <link href="{{ asset('adminka/css/themify-icons.css') }}" rel="stylesheet">
 
 
-    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-
     <!-- CSS -->
     @stack('css')
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 </head>
 <body>
     <div>
@@ -87,8 +86,8 @@
     <script src="{{ asset('adminka/js/demo.js') }}"></script>
 
     <!-- Scripts -->
-    <script src="{{ asset('adminka/js/main.js') }}"></script>
     @stack('scripts')
+    <script src="{{ asset('adminka/js/main.js') }}"></script>
 
     <script>
 

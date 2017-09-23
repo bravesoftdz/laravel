@@ -23,3 +23,9 @@ Breadcrumbs::register('admins.edit', function ($breadcrumbs, $id) {
     $breadcrumbs->push(__('admin/main.edit'));
     $breadcrumbs->push($id);
 });
+
+// Index > Pages
+Breadcrumbs::register('pages.slider', function ($breadcrumbs) {
+    $breadcrumbs->parent('index');
+    $breadcrumbs->push(__('admin/main.slider'), route('admin.index'));
+});

@@ -9,6 +9,10 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => ['role:admin']], function () {
         Route::resource('admin', 'AdminController', ['only' => ['index']]);
+        Route::get('slider', 'SliderController@slider')->name('admin.slider');
+        Route::post('slider-upload', 'SliderController@sliderUpload')->name('admin.slider.upload');
+
+
 
         Route::get('user', 'AdminController@user')->name('admin.user');
         Route::get('icons', 'AdminController@icons')->name('admin.icons');

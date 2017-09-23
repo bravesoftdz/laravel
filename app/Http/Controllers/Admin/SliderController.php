@@ -1,9 +1,10 @@
 <?php
 
-namespace Lara\Http\Controllers;
+namespace Lara\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Lara\Files;
+use Lara\Http\Controllers\Controller;
 use Storage;
 
 class SliderController extends Controller

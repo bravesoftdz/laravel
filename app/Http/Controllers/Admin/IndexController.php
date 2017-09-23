@@ -1,18 +1,10 @@
 <?php
 
-namespace Lara\Http\Controllers;
+namespace Lara\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use Illuminate\Http\Request;
-use Lara\Events\DeleteUser;
-use Lara\Mail\createUser;
-use Lara\Permissions;
-use Lara\User;
-use Lara\Roles;
-use Session;
+use Lara\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {

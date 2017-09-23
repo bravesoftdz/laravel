@@ -3,10 +3,10 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
+        {{ Breadcrumbs::render('admins.create') }}
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="header">
-                    {{ Breadcrumbs::render('admins.create') }}
                     <h4 class="title">@lang('admin/main.create')</h4>
                 </div>
                 <div class="content">

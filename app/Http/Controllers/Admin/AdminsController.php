@@ -1,11 +1,12 @@
 <?php
 
-namespace Lara\Http\Controllers;
+namespace Lara\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
+use Lara\Http\Controllers\Controller;
 use Lara\Mail\createUser;
 use Lara\User;
 use Lara\Roles;

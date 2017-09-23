@@ -3,6 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
+        {{ Breadcrumbs::render('admins.edit', $user->id) }}
         <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                 <div class="image">
@@ -38,7 +39,6 @@
         <div class="col-lg-8 col-md-7">
             <div class="card">
                 <div class="header">
-                    {{ Breadcrumbs::render('admins.edit', $user->id) }}
                     <h4 class="title">@lang('admin/main.name')</h4>
                 </div>
                 <div class="content">

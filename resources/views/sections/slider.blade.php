@@ -11,7 +11,7 @@
     <div class="carousel-inner">
         @foreach ($sliderList as $one)
             <div class="item {{ $loop->first ? 'active' : '' }}">
-                <img src="{{ Storage::url($one) }}" alt="Chicago">
+                <img src="{{ Storage::url($one) }}" alt="">
             </div>
         @endforeach
     </div>

@@ -6,7 +6,7 @@
 + run command ``` php artisan migrate ```
 + run command ``` php artisan command:start ```
 + run command ``` php artisan config:clear ```
-
++ run command ``` php artisan storage:link ```
 ## Roles
 + Super-admin
 + Admin

@@ -16,10 +16,6 @@
                 <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>@lang('admin/main.admins')</p></a>
             </li>
             @endrole
-            <li class="pages">
-                <a href="{{ route('admin.pages') }}"><i class="ti-user"></i><p>@lang('admin/main.pages')</p></a>
-            </li>
-
             <li class="user">
                 <a href="{{ route('admin.user') }}"><i class="ti-user"></i><p>User Profile</p></a>
             </li>

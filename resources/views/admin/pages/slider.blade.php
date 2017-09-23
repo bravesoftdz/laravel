@@ -21,11 +21,14 @@
                     <div class="content table-responsive table-full-width">
                        <div>
                         <form class="dropzone" id="slider-dropzone" method="post" enctype="multipart/form-data">
-                            <span class="hidden">
+                            <ul id="imageSliderList" class="hidden">
                                 @foreach($imageSliderList as $one)
-                                    <li data-path="{{ $one->path }}" data-name="{{ $one->name }}" data-size="{{ $one->size }}"></li>
+                                    <li data-url="{{ Storage::url($one->path) }}"
+                                        data-path="{{ $one->path }}"
+                                        data-name="{{ $one->name }}"
+                                        data-size="{{ $one->size }}"></li>
                                 @endforeach
-                            </span>
+                            </ul>
                             <div class="fallback">
                                 <input name="file" type="file" multiple />=
                             </div>

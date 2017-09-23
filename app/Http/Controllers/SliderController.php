@@ -6,19 +6,12 @@ use Illuminate\Http\Request;
 use Lara\Files;
 use Storage;
 
-class PagesController extends Controller
+class SliderController extends Controller
 {
-    public function index()
-    {
-        return view('admin.pages.index');
-    }
 
     public function slider()
     {
         $imageSliderList = Files::where(['destination' => Files::TYPE_SLIDER])->get();
-        foreach ($imageSliderList as $one){
-            //...
-        }
         return view('admin.pages.slider', compact('imageSliderList'));
     }
 

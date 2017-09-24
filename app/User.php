@@ -5,6 +5,7 @@ namespace Lara;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Lara\Scopes\ActiveScope;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -37,5 +38,44 @@ class User extends Authenticatable
     {
         parent::boot();
         static::addGlobalScope(new ActiveScope());
+    }
+
+    /**
+     * @param string|array $roles
+     * @return array
+     */
+    protected static function getUserFromRole($roles): array
+    {
+        $users = self::all();
+        $userList = [];
+        foreach ($users as $user){
+            if ($user->hasRole($roles)){
+                $userList[] = $user;
+            }
+        }
+
+        return $userList;
+    }
+
+    static function getAdminUsers()
+    {
+        return self::getUserFromRole(Roles::ADMIN);
+    }
+
+    static function getSuperAdminUsers()
+    {
+        return self::getUserFromRole(Roles::SUPER_ADMIN);
+    }
+
+    static function getUsers()
+    {
+        $users = self::all();
+        $userList = [];
+        foreach ($users as $user){
+            if (!$user->hasAnyRole(Role::all())){
+                $userList[] = $user;
+            }
+        }
+        return $userList;
     }
 }

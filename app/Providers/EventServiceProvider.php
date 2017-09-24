@@ -14,7 +14,10 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Lara\Events\DeleteUser' => [
-            'Lara\Listeners\DeleteUser',
+            'Lara\Listeners\DeleteUserListener',
+        ],
+        'Lara\Events\UpdateUser' => [
+            'Lara\Listeners\UpdateUserListener',
         ],
     ];
 

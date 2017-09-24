@@ -34,6 +34,7 @@
 
 
     <!-- CSS -->
+    <link href="{{ asset('adminka/css/main.css') }}" rel="stylesheet">
     @stack('css')
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 </head>

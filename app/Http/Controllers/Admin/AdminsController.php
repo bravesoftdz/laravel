@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Lara\Events\DeleteUser;
+use Lara\Events\UpdateUser;
 use Lara\Http\Controllers\Controller;
 use Lara\Mail\createUser;
 use Lara\User;
@@ -18,14 +19,8 @@ class AdminsController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        $userList = [];
-        foreach ($users as $user){
-            if ($user->hasRole(Roles::ADMIN)){
-                $userList[] = $user;
-            }
-        }
-        return view('admin.admins.index', ['userList' => $userList]);
+        $userList = User::getAdminUsers();
+        return view('admin.admins.index', compact('userList'));
     }
 
     public function destroy(int $id)
@@ -33,12 +28,12 @@ class AdminsController extends Controller
         $user = User::findOrFail($id);
         event(new DeleteUser($user));
 
-        return redirect(route('admins.index'));
+        return redirect(route('admin.index'));
     }
 
     public function edit(int $id)
     {
-        $user   = User::find($id);
+        $user = User::findOrFail($id);
         return View::make('admin.admins.edit')->with(compact('user'));
     }
 
@@ -66,22 +61,19 @@ class AdminsController extends Controller
         }
 
         Session::flash('message-success', $message);
-        return redirect()->route('admins.index');
+        return redirect()->route('admin.index');
     }
 
     public function update(Request $request, int $id)
     {
-        $user = User::find($id);
-        if($user->update($request->all())){
-            Session::flash('message-success', __('admin/messages.update-ok',['name' => $user->name]));
-        }
-        return redirect()->route('admins.index');
+        event(new UpdateUser(User::findOrFail($id), $request->all()));
+        return redirect()->route('admin.index');
     }
 
     public function loginById(int $id)
     {
         Auth::loginUsingId($id);
-        return redirect()->route('admin.index');
+        return redirect()->route('adminka.index');
     }
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.web')
 
 @push('css')
     <link href="{{ asset('css/social.css') }}" rel="stylesheet">

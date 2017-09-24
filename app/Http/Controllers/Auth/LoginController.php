@@ -55,7 +55,7 @@ class LoginController extends Controller
     {
         if ($user->hasRole(Roles::ADMIN)|| $user->hasRole(Roles::SUPER_ADMIN)) {
             // do your margic here
-            return redirect()->route('admin.index');
+            return redirect()->route('adminka.index');
         }
 
         return redirect('/');

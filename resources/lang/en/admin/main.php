@@ -4,6 +4,7 @@ return [
     'en' => 'English',
     'ru' => 'Русский',
 
+    'empty'      => 'Empty',
     'exit'       => 'Logout',
     'index'      => 'Main',
     'admins'     => 'Admin Users',
@@ -19,5 +20,6 @@ return [
     'website'    => 'Website',
     'dashboard'  => 'Dashboard',
     'pages'      => 'Pages',
-    'slider'     => 'Slider'
+    'slider'     => 'Slider',
+    'users'      => 'Users',
 ];

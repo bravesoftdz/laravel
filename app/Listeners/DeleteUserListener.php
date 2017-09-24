@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class DeleteUser
+class DeleteUserListener
 {
     /**
      * Create the event listener.

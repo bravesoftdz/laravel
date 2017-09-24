@@ -3,14 +3,14 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        {{ Breadcrumbs::render('admins.create') }}
+        {{ Breadcrumbs::render('admin.create') }}
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="header">
                     <h4 class="title">@lang('admin/main.create')</h4>
                 </div>
                 <div class="content">
-                    {{ Form::model($user, ['route' => 'admins.store', 'role' => 'form']) }}
+                    {{ Form::model($user, ['route' => 'admin.store', 'role' => 'form']) }}
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">

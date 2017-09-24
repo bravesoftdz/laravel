@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        {{ Breadcrumbs::render('admin.edit', $user->id) }}
+        {{ Breadcrumbs::render('user.edit', $user->id) }}
         <div class="col-lg-4 col-md-5">
                 <div class="card card-user">
                 <div class="image">
@@ -42,7 +42,7 @@
                     <h4 class="title">@lang('admin/main.name')</h4>
                 </div>
                 <div class="content">
-                    {{ Form::model($user, ['method' => 'PUT', 'route' => ['admin.update', $user->id]]) }}
+                    {{ Form::model($user, ['method' => 'PUT', 'route' => ['user.update', $user->id]]) }}
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">

@@ -7,12 +7,12 @@
 
         <ul class="nav">
             @role(\Lara\Roles::SUPER_ADMIN)
-            <li class="admins">
-                <a href="{{ route('admins.index') }}"><i class="ti-user"></i><p>@lang('admin/main.admins')</p></a>
+            <li class="admin">
+                <a href="{{ route('admin.index') }}"><i class="ti-user"></i><p>@lang('admin/main.admins')</p></a>
             </li>
             @endrole
             <li class="user">
-                <a href="{{ route('admin.user') }}"><i class="ti-user"></i><p>User Profile</p></a>
+                <a href="{{ route('user.index') }}"><i class="ti-user"></i><p>@lang('admin/main.users')</p></a>
             </li>
             <li class="table">
                 <a href="{{ route('admin.table') }}"><i class="ti-view-list-alt"></i><p>Table List</p></a>

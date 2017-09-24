@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     @hasrole('super-admin|admin')
-                    <a class="navbar-brand" href="{{ route('admin.index') }}">Adminka</a>
+                    <a class="navbar-brand" href="{{ route('adminka.index') }}">Adminka</a>
                     @else
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Website

@@ -170,6 +170,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -235,6 +236,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
     ],
 
 ];

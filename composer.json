@@ -16,6 +16,7 @@
         "laravelcollective/html": "~5.0",
         "pusher/pusher-php-server": "^3.0",
         "spatie/laravel-permission": "^2.5",
+        "greggilbert/recaptcha": "dev-master",
         "sentry/sentry-laravel": "*"
     },
     "require-dev": {

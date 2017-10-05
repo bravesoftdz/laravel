@@ -82,7 +82,7 @@ class LoginController extends Controller
         ]);
 
         if ($user) {
-            Mail::to($user)->queue(new setUserPassword($user));
+            Mail::to($user)->queue(new setUserPassword($user, $password));
         }
 
         return true;

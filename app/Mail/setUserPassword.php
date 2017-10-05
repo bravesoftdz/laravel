@@ -13,16 +13,18 @@ class setUserPassword extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $password;
 
     /**
      * Create a new message instance.
      *
      * @param User $user
      *
-     */
-    public function __construct(User $user)
+    p*/
+    public function __construct(User $user, $password)
     {
         $this->user = $user;
+        $this->password = $password;
     }
 
     /**
